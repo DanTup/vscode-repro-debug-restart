@@ -1,0 +1,15 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "mock",
+			"request": "launch",
+			"name": "Mock",
+			"program": "${file}",
+			"args": [
+				"from-launch.json"
+			],
+			"stopOnEntry": true
+		}
+	]
+}

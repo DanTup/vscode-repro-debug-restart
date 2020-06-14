@@ -17,11 +17,16 @@ const runMode: 'external' | 'server' | 'inline' = 'inline';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	context.subscriptions.push(vscode.commands.registerCommand('extension.mock-debug.getProgramName', config => {
-		return vscode.window.showInputBox({
-			placeHolder: "Please enter the name of a markdown file in the workspace folder",
-			value: "readme.md"
-		});
+	context.subscriptions.push(vscode.commands.registerCommand('extension.mock-debug.runWithoutArgs', config => {
+		vscode.debug.startDebugging(
+			vscode.workspace.workspaceFolders![0],
+			{
+				name: "Mock",
+				request: "launch",
+				type: "mock",
+				program: '${file}',
+			},
+		);
 	}));
 
 	// register a configuration provider for 'mock' debug type
